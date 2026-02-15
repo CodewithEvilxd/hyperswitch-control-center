@@ -114,3 +114,7 @@ Welcome to the standard process for raising a Pull Request (PR) directly from a 
 - Ensure your PR adheres to our coding guidelines, style conventions, and documentation standards.
 - Include relevant tests, documentation updates, or screenshots, if applicable.
 - Collaborate and communicate effectively with other contributors and maintainers throughout the review process.
+
+## Testing (Cypress)
+
+For local E2E setup, environment variables, and RBAC tagging guidance, see the Cypress Test Suite section in the main README.

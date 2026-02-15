@@ -249,6 +249,22 @@ describe("Sign in", () => {
     cy.get('[data-testid="forgot-password"]').should("not.exist");
   });
 
+  it("should show email-only login when email feature flag is enabled", () => {
+    cy.enable_email_feature_flag();
+
+    signinPage.emailSigninLink
+      .should("be.visible")
+      .and("contain", "sign in with an email");
+
+    cy.get('[data-testid="password"]').should("exist");
+    cy.get('[data-testid="forgot-password"]').should("exist");
+
+    signinPage.emailSigninLink.click();
+
+    cy.get('[data-testid="password"]').should("not.exist");
+    cy.get('[data-testid="forgot-password"]').should("not.exist");
+  });
+
   it("should verify components displayed in 2FA setup page", () => {
     const email = helper.generateUniqueEmail();
     cy.signup_API(email, Cypress.env("CYPRESS_PASSWORD"));

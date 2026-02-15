@@ -546,6 +546,31 @@ export CYPRESS_USERNAME="cypress@test.com"
 export CYPRESS_PASSWORD="Cypress00#"
 ```
 
+Optional environment variables used by the test suite:
+
+| Variable | Description | Default |
+| --- | --- | --- |
+| CYPRESS_USERNAME | Login email used in UI flows. | None |
+| CYPRESS_PASSWORD | Login password used in UI flows. | None |
+| MAIL_URL | Base URL for the mail inbox UI used by magic-link tests. | http://localhost:8025 |
+| RBAC | Access level and role in the format accessLevel,role. | Empty (tests may create a default user via API) |
+| CYPRESS_SSO_BASE_URL | SSO server base URL for SSO flows. | None |
+| CYPRESS_SSO_CLIENT_ID | SSO client ID. | None |
+| CYPRESS_SSO_CLIENT_SECRET | SSO client secret. | None |
+| CYPRESS_SSO_USERNAME | SSO test user name. | None |
+| CYPRESS_SSO_PASSWORD | SSO test user password. | None |
+
+Backend and mail inbox requirements:
+
+- The Cypress suite expects a running Hyperswitch backend at http://localhost:8080 for API-based setup.
+- Magic link tests expect a mail inbox UI; MailHog at http://localhost:8025 works with the default MAIL_URL.
+
+RBAC tagging guidance:
+
+- Tests can be tagged in the title to control execution. Supported access-level tags: @org, @merchant, @profile.
+- Supported section tags: @operations, @connectors, @analytics, @workflows, @reconOps, @reconReports, @users, @account.
+- Example test name: "should load payments table @operations @org".
+
 #### To run tests interactively in Cypress Test Runner:
 
 ```
